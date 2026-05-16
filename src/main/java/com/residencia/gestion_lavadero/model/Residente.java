@@ -27,6 +27,9 @@ public class Residente {
     @Column (nullable = false, unique = true)
     private String DNI;
 
+    @Enumerated(EnumType.STRING)
+    private Modulo modulo;
+
     private String contrasenia;
 
     private String email;

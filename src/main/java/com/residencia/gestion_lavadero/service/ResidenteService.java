@@ -7,6 +7,11 @@ import com.residencia.gestion_lavadero.model.Residente;
 import com.residencia.gestion_lavadero.repository.ResidenteRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import com.residencia.gestion_lavadero.exception.ResidenteNoExistenteException;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -14,6 +19,17 @@ public class ResidenteService {
 
     private final ResidenteRepository residenteRepository;
     private final ResidenteMapper residenteMapper;
+
+    public List<ResidenteResponseDTO> listarTodos(){
+        return residenteMapper.toResponseDTOList(residenteRepository.findAll());
+    }
+
+    public ResidenteResponseDTO listarPorId(Long id){
+        Residente residente = residenteRepository.findById(id)
+                .orElseThrow(() -> new ResidenteNoExistenteException("Residente no encontrado con ID: " + id));
+
+        return residenteMapper.toResponseDTO(residente);
+    }
 
     public ResidenteResponseDTO registrarResidente(ResidenteRequestDTO  residenteDTO){
         if (residenteRepository.existsByDni(residenteDTO.DNI())){
@@ -34,7 +50,7 @@ public class ResidenteService {
     }
 
     public ResidenteResponseDTO eliminarResidente(Long id){
-        Residente residente = residenteRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("No se encontró el residente con ID: " + id));
+        Residente residente = residenteRepository.findById(id).orElseThrow(() -> new ResidenteNoExistenteException("No se encontró el residente con ID: " + id));
 
         ResidenteResponseDTO response = residenteMapper.toResponseDTO(residente);
 
@@ -42,5 +58,7 @@ public class ResidenteService {
 
         return response;
     }
+
+
 
 }

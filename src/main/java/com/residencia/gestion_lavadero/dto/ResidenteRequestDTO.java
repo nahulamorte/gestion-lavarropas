@@ -1,13 +1,17 @@
 package com.residencia.gestion_lavadero.dto;
 
 
+import com.residencia.gestion_lavadero.model.Modulo;
+import jakarta.validation.constraints.NotBlank;
+
 public record  ResidenteRequestDTO (
-     Long id,
-     String nombre,
-     String apellido,
-     String DNI,
-     String contrasenia,
-     String email,
+     @NotBlank Long id,
+     @NotBlank String nombre,
+     @NotBlank String apellido,
+     @NotBlank String DNI,
+     @NotBlank Modulo modulo,
+     @NotBlank String contrasenia,
+     @NotBlank String email,
      String telefono
 ){
     public ResidenteRequestDTO {
