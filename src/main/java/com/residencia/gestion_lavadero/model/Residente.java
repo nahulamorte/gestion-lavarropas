@@ -25,7 +25,7 @@ public class Residente {
     private String apellido;
 
     @Column (nullable = false, unique = true)
-    private String DNI;
+    private String dni;
 
     @Enumerated(EnumType.STRING)
     private Modulo modulo;

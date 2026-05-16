@@ -1,6 +1,6 @@
 services:
   db:
-    image: postgres:16-alphine
+    image: postgres:16-alpine
     container_name: lavadero-db
     environment:
       POSTGRES_DB: gestion_lavadero

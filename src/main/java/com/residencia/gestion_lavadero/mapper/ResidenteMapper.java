@@ -4,13 +4,15 @@ import com.residencia.gestion_lavadero.dto.ResidenteRequestDTO;
 import com.residencia.gestion_lavadero.dto.ResidenteResponseDTO;
 import com.residencia.gestion_lavadero.model.Residente;
 import org.mapstruct.Mapper;
-import org.springframework.web.bind.annotation.Mapping;
+import org.mapstruct.Mapping;
+import org.mapstruct.MappingConstants;
 
 import java.util.List;
 
-@Mapper(componentModel = "spring")
+@Mapper(componentModel = MappingConstants.ComponentModel.SPRING)
 public interface ResidenteMapper {
 
+    @Mapping(target = "id", ignore = true)
     Residente toEntity(ResidenteRequestDTO dto);
 
     ResidenteResponseDTO toResponseDTO(Residente residente);

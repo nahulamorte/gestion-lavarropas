@@ -25,7 +25,7 @@ public class ResidenteController {
     }
 
     //Get by id
-    @GetMapping("{/id}")
+    @GetMapping("/{id}")
     public ResponseEntity<ResidenteResponseDTO> getById(@PathVariable Long id){
         return ResponseEntity.ok(residenteService.listarPorId(id));    }
 
@@ -37,7 +37,7 @@ public class ResidenteController {
     }
 
     //delete
-    @DeleteMapping("{/id}")
+    @DeleteMapping("/{id}")
     public ResponseEntity<Void> eliminarResidente(@PathVariable Long id){
         residenteService.eliminarResidente(id);
         return ResponseEntity.noContent().build();

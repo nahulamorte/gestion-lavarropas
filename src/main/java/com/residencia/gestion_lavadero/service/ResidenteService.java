@@ -32,7 +32,7 @@ public class ResidenteService {
     }
 
     public ResidenteResponseDTO registrarResidente(ResidenteRequestDTO  residenteDTO){
-        if (residenteRepository.existsByDni(residenteDTO.DNI())){
+        if (residenteRepository.existsByDni(residenteDTO.dni())){
             throw new IllegalArgumentException("Ya existe un residente con el mismo DNI.");
         }
 

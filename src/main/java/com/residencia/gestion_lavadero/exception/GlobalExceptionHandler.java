@@ -41,7 +41,7 @@ public class GlobalExceptionHandler {
                 ex.getMessage(),
                 LocalDateTime.now()
         );
-        return new ResponseEntity<>(error, HttpStatus.CONFLICT) //Codigo 409
+        return new ResponseEntity<>(error, HttpStatus.CONFLICT); //Codigo 409
     }
 
     @ExceptionHandler(FueraDeHorarioException.class)

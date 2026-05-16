@@ -5,9 +5,8 @@ import com.residencia.gestion_lavadero.model.Modulo;
 public record ResidenteResponseDTO(
         String nombre,
         String apellido,
-        String DNI,
+        String dni,
         String email,
         String telefono,
         Modulo modulo
-) {
-}
+) {}
